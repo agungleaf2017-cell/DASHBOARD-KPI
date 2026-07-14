@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="id">
+ <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260714-05-1435aa9"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KPH Bojonegoro — Perum Perhutani</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=Source+Serif+Pro:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest-950: #092f27;
+      --forest-900: #0d3b31;
+      --forest-800: #145343;
+      --forest-700: #1d6a55;
+      --leaf: #8fba45;
+      --lime: #c4dc72;
+      --cream: #f4f1e7;
+      --paper: #fffdf7;
+      --ink: #18302a;
+      --muted: #64746d;
+      --line: #d8ded7;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--cream);
+    }
+
+    body {
+      margin: 0;
+      width: 100%;
+      color: var(--ink);
+      font-family: "Libre Franklin", sans-serif;
+      overflow-x: hidden;
+    }
+
+    button, input, a { font: inherit; }
+
+    .display-face {
+      font-family: "Source Serif Pro", serif;
+    }
+
+    .hero-shell {
+      min-height: calc(88 * min(var(--vh, 1vh), 1vh));
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(5, 33, 27, .93) 0%, rgba(7, 48, 38, .75) 48%, rgba(7, 38, 31, .25) 100%);
+    }
+
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .18;
+      background-image:
+        linear-gradient(115deg, transparent 25%, rgba(255,255,255,.12) 25.5%, transparent 26%),
+        radial-gradient(circle at 70% 25%, rgba(196,220,114,.55), transparent 28%);
+      background-size: 44px 44px, 100% 100%;
+      pointer-events: none;
+    }
+
+    .brand-mark {
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, .18));
+    }
+
+    .eyebrow {
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      max-width: 850px;
+      letter-spacing: -.055em;
+      line-height: .92;
+      text-wrap: balance;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      line-height: 1.75;
+    }
+
+    .slogan-rule {
+      width: 64px;
+      height: 2px;
+      background: var(--lime);
+    }
+
+    .hero-stat {
+      border-left: 1px solid rgba(255,255,255,.25);
+    }
+
+    .soft-grid {
+      background-image:
+        linear-gradient(rgba(13,59,49,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(13,59,49,.045) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .data-card {
+      box-shadow: 0 28px 70px rgba(18, 48, 39, .12);
+    }
+
+    .table-viewport {
+      scrollbar-width: thin;
+      scrollbar-color: var(--forest-700) #e9ede7;
+    }
+
+    .data-table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .data-table th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      padding: 14px 18px;
+      color: #f8f7ef;
+      background: var(--forest-900);
+      border-right: 1px solid rgba(255,255,255,.12);
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .data-table th:first-child { border-top-left-radius: 12px; }
+    .data-table th:last-child { border-top-right-radius: 12px; border-right: 0; }
+
+    .data-table td {
+      padding: 14px 18px;
+      border-right: 1px solid #e3e7e1;
+      border-bottom: 1px solid #e3e7e1;
+      color: #344a43;
+      background: rgba(255,255,255,.88);
+      font-size: 14px;
+      line-height: 1.55;
+      vertical-align: top;
+      max-width: 360px;
+      overflow-wrap: anywhere;
+    }
+
+    .data-table tbody tr:nth-child(even) td {
+      background: #f5f7f2;
+    }
+
+    .data-table tbody tr:hover td {
+      background: #eef5dd;
+    }
+
+    .data-table td:first-child { border-left: 1px solid #e3e7e1; }
+
+    .focus-ring:focus-visible {
+      outline: 3px solid var(--lime);
+      outline-offset: 3px;
+    }
+
+    .loading-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: currentColor;
+      animation: pulse-dot 1s ease-in-out infinite;
+    }
+
+    .loading-dot:nth-child(2) { animation-delay: .16s; }
+    .loading-dot:nth-child(3) { animation-delay: .32s; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: reveal-up .8s cubic-bezier(.2,.7,.2,1) forwards;
+    }
+
+    .delay-1 { animation-delay: .12s; }
+    .delay-2 { animation-delay: .24s; }
+    .delay-3 { animation-delay: .36s; }
+
+    @keyframes reveal-up {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: .35; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-3px); }
+    }
+
+    @media (max-width: 767px) {
+      .hero-shell {
+        min-height: calc(92 * min(var(--vh, 1vh), 1vh));
+      }
+
+      .hero-shade {
+        background: linear-gradient(180deg, rgba(5,33,27,.88), rgba(7,48,38,.72));
+      }
+
+      .hero-stat {
+        border-left: 0;
+        border-top: 1px solid rgba(255,255,255,.22);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .loading-dot { animation: none; opacity: 1; transform: none; }
+    }
+  </style>
+  <script src="/_sdk/0179d719c431a79e.data_sdk.js" type="text/javascript" integrity="sha512-OsRvJkI5GkC3MJQcgotQYotpzrMSX415GiKKgvYdxQEEkzD/fdchShO2FMSy0PJr/tiINMXOk5Vl2zAgg6bUiA=="></script>
+  <script src="/_sdk/9432170dbd2ae0df.resizing_sdk.js" type="text/javascript" integrity="sha512-FeT+58sb1f9ejWPWFjCbJvTT+SDwGV+ngrHUnlO7TWEOoqwOLj6p256kO3vOL7DIWl1cIgrobiof8v2bOigwPg=="></script>
+ </head>
+ <body data-template-id="__page-root" class="w-full">
+  <header class="hero-shell w-full text-white">
+   <img data-template-id="hero-forest-image" loading="lazy" class="canva-image hero-photo">
+   <div class="hero-shade" aria-hidden="true"></div>
+   <div class="hero-grain" aria-hidden="true"></div>
+   <nav aria-label="Navigasi utama" class="w-full">
+    <div class="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-5 py-5 md:px-8 lg:px-10">
+     <a href="#beranda" class="focus-ring flex min-w-0 items-center gap-3 rounded-lg text-white no-underline"> <img data-template-id="brand-logo" loading="lazy" class="canva-image brand-mark h-12 w-12 shrink-0" alt="Logo Perhutani">
+      <div class="min-w-0">
+       <p data-template-id="brand-name" class="canva-text truncate font-extrabold uppercase tracking-wide"></p>
+       <p data-template-id="brand-unit" class="canva-text truncate opacity-75"></p>
+      </div></a> <a data-template-id="nav-data-link" href="#data-online" class="canva-link focus-ring hidden items-center gap-2 rounded-full border border-white/35 px-5 py-2.5 font-semibold text-white no-underline transition hover:border-white hover:bg-white hover:text-emerald-950 sm:inline-flex"></a>
+    </div>
+   </nav>
+   <main id="beranda" class="mx-auto flex w-full max-w-7xl flex-1 items-center px-5 pb-12 pt-10 md:px-8 md:pb-20 md:pt-16 lg:px-10">
+    <div class="w-full">
+     <div class="reveal flex items-center gap-3">
+      <span class="slogan-rule" aria-hidden="true"></span>
+      <p data-template-id="hero-kicker" class="canva-text eyebrow font-bold"></p>
+     </div>
+     <h1 data-template-id="hero-title" class="canva-text display-face hero-title reveal delay-1 mt-5 font-bold"></h1>
+     <p data-template-id="hero-description" class="canva-text hero-copy reveal delay-2 mt-7"></p>
+     <div class="reveal delay-3 mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+      <a data-template-id="hero-primary-button" href="#data-online" class="canva-button focus-ring inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-bold no-underline shadow-xl transition hover:-translate-y-0.5"></a>
+      <div class="flex items-center gap-3 px-2">
+       <span class="h-2.5 w-2.5 rounded-full bg-lime-300 shadow-[0_0_0_6px_rgba(196,220,114,.14)]"></span>
+       <p data-template-id="hero-slogan" class="canva-text display-face font-semibold italic"></p>
+      </div>
+     </div>
+     <div class="reveal delay-3 mt-12 grid max-w-3xl grid-cols-1 gap-5 border-t border-white/25 pt-6 sm:grid-cols-3">
+      <div>
+       <p data-template-id="meta-type-label" class="canva-text eyebrow opacity-60"></p>
+       <p data-template-id="meta-type-value" class="canva-text mt-1 font-semibold"></p>
+      </div>
+      <div class="hero-stat sm:pl-6">
+       <p data-template-id="meta-region-label" class="canva-text eyebrow opacity-60"></p>
+       <p data-template-id="meta-region-value" class="canva-text mt-1 font-semibold"></p>
+      </div>
+      <div class="hero-stat sm:pl-6">
+       <p data-template-id="meta-location-label" class="canva-text eyebrow opacity-60"></p>
+       <p data-template-id="meta-location-value" class="canva-text mt-1 font-semibold"></p>
+      </div>
+     </div>
+    </div>
+   </main>
+  </header>
+  <main class="soft-grid w-full">
+   <section id="data-online" class="mx-auto w-full max-w-7xl px-5 py-16 md:px-8 md:py-24 lg:px-10">
+    <div class="mb-9 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+     <div class="max-w-2xl">
+      <div class="mb-3 flex items-center gap-3">
+       <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-900 text-lime-200"> <i data-lucide="table-2" class="h-4 w-4"></i> </span>
+       <p data-template-id="data-kicker" class="canva-text eyebrow font-bold"></p>
+      </div>
+      <h2 data-template-id="data-title" class="canva-text display-face font-bold leading-tight"></h2>
+      <p data-template-id="data-description" class="canva-text mt-3 leading-relaxed"></p>
+     </div><a data-template-id="source-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxScPejqvtdauHJLYvJ1A1mNevrn4aQ_4YxquSkvu6Rx-Y4BTjAUVr7ByQIpXY5RvaYEUa53_nDBkB/pub?gid=0&amp;single=true&amp;output=csv" target="_blank" rel="noopener noreferrer" class="canva-link focus-ring inline-flex w-fit items-center gap-2 rounded-full border border-emerald-900/20 bg-white px-5 py-3 font-semibold no-underline shadow-sm transition hover:border-emerald-800 hover:shadow-md"></a>
+    </div>
+    <div data-template-id="data-panel" class="canva-panel data-card overflow-hidden rounded-3xl border border-emerald-950/10">
+     <div class="flex flex-col gap-4 border-b border-emerald-950/10 p-5 md:flex-row md:items-center md:justify-between md:p-6">
+      <div class="flex min-w-0 items-center gap-3" aria-live="polite">
+       <span id="status-icon" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700"> <i data-lucide="loader-circle" class="h-4 w-4 animate-spin"></i> </span>
+       <div class="min-w-0">
+        <p data-template-id="sync-label" class="canva-text font-bold"></p>
+        <p id="status-text" class="truncate text-sm text-slate-500">Mengambil data terbaru…</p>
+       </div>
+      </div>
+      <div class="flex flex-col gap-3 sm:flex-row">
+       <div class="relative min-w-0 sm:w-72">
+        <label data-template-id="search-label" for="table-search" class="canva-text sr-only"></label> <i data-lucide="search" class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"></i> <input id="table-search" data-template-id="search-input" type="search" class="canva-input focus-ring w-full rounded-full border border-slate-200 bg-white py-3 pl-11 pr-4 text-sm text-slate-800 outline-none transition focus:border-emerald-700">
+       </div><button id="reload-button" data-template-id="reload-button" type="button" class="canva-button focus-ring inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 font-bold shadow-sm transition hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60"></button>
+      </div>
+     </div>
+     <div id="loading-state" class="flex min-h-72 flex-col items-center justify-center gap-5 px-6 py-14 text-center">
+      <div class="flex gap-2 text-emerald-700" aria-hidden="true">
+       <span class="loading-dot"></span> <span class="loading-dot"></span> <span class="loading-dot"></span>
+      </div>
+      <div>
+       <h3 data-template-id="loading-title" class="canva-text font-bold"></h3>
+       <p data-template-id="loading-description" class="canva-text mt-2"></p>
+      </div>
+     </div>
+     <div id="error-state" class="hidden min-h-72 flex-col items-center justify-center px-6 py-14 text-center">
+      <span class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-700"> <i data-lucide="wifi-off" class="h-6 w-6"></i> </span>
+      <h3 data-template-id="error-title" class="canva-text font-bold"></h3>
+      <p data-template-id="error-description" class="canva-text mt-2 max-w-xl leading-relaxed"></p><button id="retry-button" data-template-id="retry-button" type="button" class="canva-button focus-ring mt-6 inline-flex items-center gap-2 rounded-full px-5 py-3 font-bold"></button>
+     </div>
+     <div id="empty-state" class="hidden min-h-72 flex-col items-center justify-center px-6 py-14 text-center">
+      <span class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-800"> <i data-lucide="file-spreadsheet" class="h-6 w-6"></i> </span>
+      <h3 data-template-id="empty-title" class="canva-text font-bold"></h3>
+      <p data-template-id="empty-description" class="canva-text mt-2"></p>
+     </div>
+     <div id="no-results-state" class="hidden min-h-60 flex-col items-center justify-center px-6 py-12 text-center">
+      <span class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-600"> <i data-lucide="search-x" class="h-5 w-5"></i> </span>
+      <h3 data-template-id="no-results-title" class="canva-text font-bold"></h3>
+      <p data-template-id="no-results-description" class="canva-text mt-2"></p>
+     </div>
+     <div id="table-state" class="hidden">
+      <div class="table-viewport max-h-[620px] overflow-auto p-3 md:p-5">
+       <table class="data-table" aria-label="Data spreadsheet KPH Bojonegoro">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+       </table>
+      </div>
+      <div class="flex flex-col gap-2 border-t border-emerald-950/10 px-5 py-4 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+       <p id="row-summary" aria-live="polite">0 baris ditampilkan</p>
+       <p data-template-id="table-note" class="canva-text"></p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer data-template-id="footer-section" class="canva-footer w-full">
+   <div class="mx-auto flex w-full max-w-7xl flex-col gap-4 px-5 py-8 md:flex-row md:items-center md:justify-between md:px-8 lg:px-10">
+    <div>
+     <p data-template-id="footer-title" class="canva-text font-bold"></p>
+     <p data-template-id="footer-subtitle" class="canva-text mt-1"></p>
+    </div>
+    <p data-template-id="footer-motto" class="canva-text display-face italic"></p>
+   </div>
+  </footer>
+  <script src="/_sdk/719055fef2a85d14.editing_sdk.js" integrity="sha512-kFqrdGgIiTOsu307feB5Cy3JVP9IayftsmCIZ0csxYBGuBmJQPhyvcnmKR8F0fTW97h5s1gAvz3SumI8zJ6OxQ=="></script>
+  <script>
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxScPejqvtdauHJLYvJ1A1mNevrn4aQ_4YxquSkvu6Rx-Y4BTjAUVr7ByQIpXY5RvaYEUa53_nDBkB/pub?gid=0&single=true&output=csv";
+
+    const state = {
+      headers: [],
+      rows: [],
+      query: "",
+      loading: false
+    };
+
+    const elements = {
+      loading: document.getElementById("loading-state"),
+      error: document.getElementById("error-state"),
+      empty: document.getElementById("empty-state"),
+      noResults: document.getElementById("no-results-state"),
+      table: document.getElementById("table-state"),
+      head: document.getElementById("table-head"),
+      body: document.getElementById("table-body"),
+      search: document.getElementById("table-search"),
+      reload: document.getElementById("reload-button"),
+      retry: document.getElementById("retry-button"),
+      statusText: document.getElementById("status-text"),
+      statusIcon: document.getElementById("status-icon"),
+      summary: document.getElementById("row-summary")
+    };
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let field = "";
+      let quoted = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"') {
+          if (quoted && next === '"') {
+            field += '"';
+            i++;
+          } else {
+            quoted = !quoted;
+          }
+        } else if (char === "," && !quoted) {
+          row.push(field.trim());
+          field = "";
+        } else if ((char === "\n" || char === "\r") && !quoted) {
+          if (char === "\r" && next === "\n") i++;
+          row.push(field.trim());
+          if (row.some(cell => cell !== "")) rows.push(row);
+          row = [];
+          field = "";
+        } else {
+          field += char;
+        }
+      }
+
+      row.push(field.trim());
+      if (row.some(cell => cell !== "")) rows.push(row);
+      return rows;
+    }
+
+    function setView(view) {
+      ["loading", "error", "empty", "noResults", "table"].forEach(name => {
+        const node = elements[name];
+        node.classList.toggle("hidden", name !== view);
+        if (["error", "empty", "noResults"].includes(name)) {
+          node.classList.toggle("flex", name === view);
+        }
+      });
+    }
+
+    function setStatus(type, text) {
+      elements.statusText.textContent = text;
+      const iconMap = {
+        loading: ["loader-circle", "bg-amber-100", "text-amber-700", true],
+        success: ["circle-check", "bg-emerald-100", "text-emerald-700", false],
+        error: ["circle-alert", "bg-red-100", "text-red-700", false]
+      };
+      const [icon, bg, color, spin] = iconMap[type];
+
+      elements.statusIcon.className = `flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${bg} ${color}`;
+      elements.statusIcon.innerHTML = `<i data-lucide="${icon}" class="h-4 w-4 ${spin ? "animate-spin" : ""}"></i>`;
+      lucide.createIcons();
+    }
+
+    function createCell(tag, content) {
+      const cell = document.createElement(tag);
+      cell.textContent = content;
+      return cell;
+    }
+
+    function renderHeader() {
+      elements.head.replaceChildren();
+      const headerRow = document.createElement("tr");
+
+      state.headers.forEach((header, index) => {
+        headerRow.appendChild(createCell("th", header || `Kolom ${index + 1}`));
+      });
+
+      elements.head.appendChild(headerRow);
+    }
+
+    function filteredRows() {
+      if (!state.query) return state.rows;
+      const query = state.query.toLocaleLowerCase("id-ID");
+      return state.rows.filter(row =>
+        row.some(cell => String(cell).toLocaleLowerCase("id-ID").includes(query))
+      );
+    }
+
+    function renderRows() {
+      const rows = filteredRows();
+      elements.body.replaceChildren();
+
+      if (state.rows.length === 0) {
+        setView("empty");
+        elements.summary.textContent = "0 baris ditampilkan";
+        return;
+      }
+
+      if (rows.length === 0) {
+        setView("noResults");
+        elements.summary.textContent = "0 hasil ditemukan";
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
+      rows.forEach(row => {
+        const tr = document.createElement("tr");
+        state.headers.forEach((_, index) => {
+          tr.appendChild(createCell("td", row[index] ?? ""));
+        });
+        fragment.appendChild(tr);
+      });
+
+      elements.body.appendChild(fragment);
+      elements.summary.textContent = state.query
+        ? `${rows.length} dari ${state.rows.length} baris cocok`
+        : `${rows.length} baris ditampilkan`;
+      setView("table");
+    }
+
+    async function loadData() {
+      if (state.loading) return;
+      state.loading = true;
+      elements.reload.disabled = true;
+      elements.retry.disabled = true;
+      setView("loading");
+      setStatus("loading", "Mengambil data terbaru…");
+
+      try {
+        const requestUrl = `${CSV_URL}&_=${Date.now()}`;
+        const response = await fetch(requestUrl, { cache: "no-store" });
+
+        if (!response.ok) {
+          throw new Error("Spreadsheet tidak dapat diakses.");
+        }
+
+        const text = await response.text();
+        const parsed = parseCSV(text);
+
+        if (parsed.length === 0) {
+          state.headers = [];
+          state.rows = [];
+          setStatus("success", "Spreadsheet terhubung, tetapi belum berisi data");
+          setView("empty");
+          return;
+        }
+
+        const width = Math.max(...parsed.map(row => row.length));
+        state.headers = Array.from({ length: width }, (_, index) =>
+          parsed[0][index] || `Kolom ${index + 1}`
+        );
+        state.rows = parsed.slice(1).map(row =>
+          Array.from({ length: width }, (_, index) => row[index] ?? "")
+        );
+
+        renderHeader();
+        renderRows();
+
+        const formattedTime = new Intl.DateTimeFormat("id-ID", {
+          hour: "2-digit",
+          minute: "2-digit"
+        }).format(new Date());
+
+        setStatus("success", `Tersinkron pada ${formattedTime}`);
+      } catch (error) {
+        setView("error");
+        setStatus("error", "Data belum dapat dimuat");
+      } finally {
+        state.loading = false;
+        elements.reload.disabled = false;
+        elements.retry.disabled = false;
+      }
+    }
+
+    elements.search.addEventListener("input", event => {
+      state.query = event.target.value.trim();
+      renderRows();
+    });
+
+    elements.reload.addEventListener("click", loadData);
+    elements.retry.addEventListener("click", loadData);
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener("click", event => {
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    lucide.createIcons();
+    loadData();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1b0ec23426e7e17',t:'MTc4NDAzNjI1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
